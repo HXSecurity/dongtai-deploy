@@ -3,14 +3,19 @@
 
 
 ### 部署流程
+1. 登录私有仓库
+    ```shell script
+       docker login —username=dongtai-image@huoxian registry.cn-beijing.aliyuncs.com
+       DkhcuicgyEzwxBr2MNy2iQ89
+    ```
 
-1. 查看当前机器的内网IP地址：`ifconfig`，如：192.168.1.101
+2. 查看当前机器的内网IP地址：`ifconfig`，如：192.168.1.101
 
-2. 执行`install.sh`启动环境安装。用法: `./install.sh <ip>`, 例如：
+3. 执行`install.sh`启动环境安装。用法: `./install.sh <ip>`, 例如：
 
     ```shell script
        ./install.sh 192.168.1.101
     ```
-    
+
 环境启动成功后，通过80端口访问即可。
 
