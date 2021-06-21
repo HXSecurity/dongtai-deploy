@@ -4,7 +4,7 @@
 ## 一、单机版部署
 
 ### 1. docker-compose一键部署
-[部署方案](deploy/docker-compose/readme.md)
+[部署方案](docker-compose/readme.md)
 
 ### 2. docker一键部署方案
 
@@ -95,4 +95,4 @@ $ npm run build
 
 ## 二、集群版部署
 ### Kubernetes版本一键部署
-[部署方案](deploy/kubernetes/README.md)
+[部署方案](kubernetes/README.md)
