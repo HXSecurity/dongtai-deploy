@@ -5,7 +5,7 @@
 ### 部署流程
 1. 登录私有仓库
     ```shell script
-       docker login —username=dongtai-image@huoxian registry.cn-beijing.aliyuncs.com
+       docker login --username=dongtai-image@huoxian registry.cn-beijing.aliyuncs.com
        DkhcuicgyEzwxBr2MNy2iQ89
     ```
 
