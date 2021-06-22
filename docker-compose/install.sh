@@ -22,6 +22,10 @@ OPEN_API="dongtai-openapi"
 
 cd "$CURRENT_PATH" || exit
 
+login_dongtai_repo(){
+  echo "Login to DongTai-Image Repo"
+  docker login --username=dongtai-image@huoxian --password DkhcuicgyEzwxBr2MNy2iQ89 registry.cn-beijing.aliyuncs.com
+}
 
 check_env(){
   if ! [ -x "$(command -v docker-compose)" ]; then
@@ -56,6 +60,7 @@ clean_temporary_conf(){
 
 check_env
 create_temporary_conf
+login_dongtai_repo
 start_docker_compose
 clean_temporary_conf
 
