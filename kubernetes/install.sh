@@ -132,10 +132,10 @@ start_deploy(){
 expose_services(){
   if [ "$ACCESS_TYPE" == "NodePort" ];then
      kubectl expose deployments/dongtai-web --name=dongtai-web-pub-svc  --port=80 --target-port=80 -n "$NAMESPACE" --type=NodePort
-     kubectl expose deployments/dongtai-engine --name=dongtai-engine-pub-svc  --port=8000 --target-port=8000 -n "$NAMESPACE" --type=NodePort
+     kubectl expose deployments/dongtai-openapi --name=dongtai-openapi-pub-svc  --port=8000 --target-port=8000 -n "$NAMESPACE" --type=NodePort
   elif [ "$ACCESS_TYPE" == "LoadBalancer" ]; then
      kubectl expose deployments/dongtai-web --name=dongtai-web-pub-svc  --port=80 --target-port=80 -n d"$NAMESPACE" --type=LoadBalancer
-     kubectl expose deployments/dongtai-engine --name=dongtai-engine-pub-svc  --port=8000 --target-port=8000 -n "$NAMESPACE" --type=LoadBalancer
+     kubectl expose deployments/dongtai-openapi --name=dongtai-openapi-pub-svc  --port=8000 --target-port=8000 -n "$NAMESPACE" --type=LoadBalancer
   fi
 }
 
@@ -151,8 +151,8 @@ if [ "$ACCESS_TYPE" == "NodePort" ]; then
     Info "Available node ip:"
     kubectl get nodes -o wide |  awk {'print $7'} | column -t
     Info "dongtai-web service port:] $(kubectl get svc dongtai-web-pub-svc -n "$NAMESPACE" -o=jsonpath='{.spec.ports[0].nodePort}')"
-    Info "dongtai-engine service port:] $(kubectl get svc dongtai-engine-pub-svc -n "$NAMESPACE" -o=jsonpath='{.spec.ports[0].nodePort}')"
+    Info "dongtai-openapi service port:] $(kubectl get svc dongtai-openapi-pub-svc -n "$NAMESPACE" -o=jsonpath='{.spec.ports[0].nodePort}')"
 
 elif [ "$ACCESS_TYPE" == "LoadBalancer"  ]; then
-    Todo "Get EXTERNAL-IP ip or dns by: kubectl get svc dongtai-web-pub-svc dongtai-engine-pub-svc -n $NAMESPACE"
+    Todo "Get EXTERNAL-IP ip or dns by: kubectl get svc dongtai-web-pub-svc dongtai-openapi-pub-svc -n $NAMESPACE"
 fi
