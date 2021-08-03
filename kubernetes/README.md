@@ -1,5 +1,7 @@
 # Rapid deployment of Kubnernetes environment
 
+[中文版本(Chinese version)](kubernates/README.ZH-CN.MD)
+
 ## Prepare in advance
 
 - Kubernetes version: 1.9+
