@@ -2,6 +2,8 @@ version: "2"
 services:
   dongtai-mysql:
     image: registry.cn-beijing.aliyuncs.com/huoxian_pub/dongtai-mysql:1.0.0
+    volumes:
+      - /data/datadir:/var/lib/mysql
 
   dongtai-redis:
     image: registry.cn-beijing.aliyuncs.com/huoxian_pub/dongtai-redis:1.0.0

@@ -18,6 +18,9 @@ check_env(){
   fi
 }
 
+echo "mysql持久化"
+mkdir /data/datadir
+
 start_docker_compose(){
   echo "[Info] Starting docker compose ..."
   docker-compose -p dongtai-iast up -d
