@@ -1,4 +1,5 @@
-#Kubnernetes环境快速部署
+# Kubnernetes环境快速部署
+[English](README.MD)
 
 ## 提前准备
 
