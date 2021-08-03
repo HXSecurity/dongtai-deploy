@@ -26,7 +26,7 @@ services:
   dongtai-openapi:
     image: registry.cn-beijing.aliyuncs.com/huoxian_pub/dongtai-openapi:1.0.0
     volumes:
-       - $PWD/config-tutorial.ini:/opt/dongtai/apiserver/conf/config.ini:ro
+       - $PWD/config-tutorial.ini:/opt/dongtai/openapi/conf/config.ini:ro
     ports:
       - "8000:8000"
     depends_on:
