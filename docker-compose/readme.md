@@ -1,4 +1,5 @@
 ## Deploy With Docker-Compose
+[中文版本(Chinese version)](docker-compose/README.ZH-CN.MD)
 
 ## Prepare in advance
   - Docker
