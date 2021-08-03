@@ -1,6 +1,6 @@
 # Rapid deployment of Kubnernetes environment
 
-[中文版本(Chinese version)](kubernates/README.ZH-CN.MD)
+[中文版本(Chinese version)](README.ZH-CN.MD)
 
 ## Prepare in advance
 
