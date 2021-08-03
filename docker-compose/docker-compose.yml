@@ -9,7 +9,7 @@ services:
   dongtai-webapi:
     image: registry.cn-beijing.aliyuncs.com/huoxian_pub/dongtai-webapi:1.0.0
     volumes:
-      - $PWD/config-tutorial.ini:/opt/iast/webapi/conf/config.ini:ro
+      - $PWD/config-tutorial.ini:/opt/dongtai/webapi/conf/config.ini:ro
     depends_on:
       - dongtai-mysql
       - dongtai-redis
@@ -26,7 +26,7 @@ services:
   dongtai-openapi:
     image: registry.cn-beijing.aliyuncs.com/huoxian_pub/dongtai-openapi:1.0.0
     volumes:
-       - $PWD/config-tutorial.ini:/opt/iast/apiserver/conf/config.ini:ro
+       - $PWD/config-tutorial.ini:/opt/dongtai/apiserver/conf/config.ini:ro
     ports:
       - "8000:8000"
     depends_on:
@@ -36,16 +36,16 @@ services:
   dongtai-engine:
     image: registry.cn-beijing.aliyuncs.com/huoxian_pub/dongtai-engine:1.0.0
     volumes:
-      - $PWD/config-tutorial.ini:/opt/iast/engine/conf/config.ini:ro
+      - $PWD/config-tutorial.ini:/opt/dongtai/engine/conf/config.ini:ro
     depends_on:
       - dongtai-mysql
       - dongtai-redis
 
   dongtai-engine-task:
     image: registry.cn-beijing.aliyuncs.com/huoxian_pub/dongtai-engine:1.0.0
-    command: ["/opt/iast/engine/docker/entrypoint.sh", "task"]
+    command: ["/opt/dongtai/engine/docker/entrypoint.sh", "task"]
     volumes:
-      - $PWD/config-tutorial.ini:/opt/iast/engine/conf/config.ini:ro
+      - $PWD/config-tutorial.ini:/opt/dongtai/engine/conf/config.ini:ro
     depends_on:
       - dongtai-mysql
       - dongtai-redis

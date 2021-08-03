@@ -64,7 +64,7 @@ spec:
           imagePullPolicy: IfNotPresent
           volumeMounts:
             - name: configfile
-              mountPath: /opt/iast/webapi/conf/config.ini
+              mountPath: /opt/dongtai/webapi/conf/config.ini
               subPath: config.ini
           resources:
             limits:
@@ -120,7 +120,7 @@ spec:
           imagePullPolicy: Always
           volumeMounts:
             - name: configfile
-              mountPath: /opt/iast/apiserver/conf/config.ini
+              mountPath: /opt/dongtai/apiserver/conf/config.ini
               subPath: config.ini
           resources:
             limits:
@@ -271,7 +271,7 @@ spec:
           imagePullPolicy: IfNotPresent
           volumeMounts:
             - name: configfile
-              mountPath: /opt/iast/engine/conf/config.ini
+              mountPath: /opt/dongtai/engine/conf/config.ini
               subPath: config.ini
           resources:
             limits:
@@ -324,12 +324,12 @@ spec:
       containers:
         - name: dongtai-engine-task-container
           image: registry.cn-beijing.aliyuncs.com/huoxian_pub/dongtai-engine:1.0.0
-          command: [ "/bin/bash","/opt/iast/engine/docker/entrypoint.sh" ]
+          command: [ "/bin/bash","/opt/dongtai/engine/docker/entrypoint.sh" ]
           args: [ "task" ]
           imagePullPolicy: Always
           volumeMounts:
             - name: configfile
-              mountPath: /opt/iast/engine/conf/config.ini
+              mountPath: /opt/dongtai/engine/conf/config.ini
               subPath: config.ini
           resources:
             limits:
