@@ -1,10 +1,10 @@
-#Kubnernetes环境快速部署
+# Rapid deployment of Kubnernetes environment
 
-## 提前准备
+## Prepare in advance
 
-- Kubernetes 版本：1.9+
-- 客户端已经安装kubectl
-- 具备以下操作的授权,可以使用`kubectl auth can-i`验证：
+- Kubernetes version: 1.9+
+- Kubectl has been installed on the client
+- You can use `kubectl auth can-i` if you have authorization for the following operations：
     - create secrets
     - create deployments
     - create configmaps
@@ -13,54 +13,57 @@
     - create Service
  
 
-## 部署
+## Deployment
 
-用法:  
+Usage:  
 ```
 ./install.sh -m NodePort -s mysql -n dongtai-iast
 ```
 
-m: 访问模式(mode)，可选：`NodePort` `LoadBalancer`,默认为：NodePort
+m: access mode(mode), optional: `NodePort` `LoadBalancer`, default: NodePort
 
-s: 跳过的资源(skip)，可选： `mysql` `redis`  `mysql,redis`，默认：不跳过
+s: skipped resources(skip), optional: `mysql` `redis`  `mysql,redis`, default: don't skip
 
-n: 指定namespace，默认为：`dongtai-iast`
+n: specify the namespace, default: `dongtai-iast`
 
-## 自定义配置
-如需修改mysql和redis的配置，需要手动修改 `manifest/4.deploy-iast-server.yml`最上部分的`[mysql]`和`redis`部分配置。
+## custom configuration
 
-> 说明：假设`mysql`和`redis`的配置可用于生产环境，此部署方案即可用于生产环境部署。
+If you want to modify the configuration of mysql and Redis, manually modify the configuration `manifest/4.deploy-iast-server.yml` The top part of `[mysql]` and `redis`.
 
-   
-## 访问
+> Note: Assuming that `mysql` and `redis` can be configured for production, this deployment scheme can be used for production deployment.
+
+## Access
 
 ### NodePort 
 
-#### 获取可用的Node IP
+#### Obtain an available Node IP address
+
 ```shell script
 kubectl get nodes -o wide |  awk {'print $1" " $2 " " $7'} | column -t
 ```
 
-#### 获取可用的NodePort
+#### Obtain an available NodePort
 
 ```shell script
 kubectl get svc dongtai-web-pub-svc -n dongtai-iast -o=jsonpath='{.spec.ports[0].nodePort}'
 kubectl get svc dongtai-engine-pub-svc -n dongtai-iast -o=jsonpath='{.spec.ports[0].nodePort}')
 ```
 
-#### 访问地址:
+#### Access Link:
+
 ```shell script
 http://${NodeIP}:${PORT}
 ```
 
 ### LoadBalancer
 
-#### 获取可用的LoadBalancer IP或者DNS
+#### Obtain the available LoadBalancer IP address or DNS
+
 ```shell script
 kubectl get svc dongtai-web-pub-svc dongtai-engine-pub-svc -n dongtai-iast
 ```
 
-## 卸载
+## Uninstall
 
 ```shell script
 kubectl delete namespace ${YourNamespace}

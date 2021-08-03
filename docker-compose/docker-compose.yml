@@ -1,13 +1,13 @@
 version: "2"
 services:
   dongtai-mysql:
-    image: registry.cn-beijing.aliyuncs.com/huoxian_pub/dongtai-mysql:5.7
+    image: registry.cn-beijing.aliyuncs.com/huoxian_pub/dongtai-mysql:1.0.0
 
   dongtai-redis:
-    image: registry.cn-beijing.aliyuncs.com/huoxian_pub/dongtai-redis:latest
+    image: registry.cn-beijing.aliyuncs.com/huoxian_pub/dongtai-redis:1.0.0
 
   dongtai-webapi:
-    image: registry.cn-beijing.aliyuncs.com/huoxian_pub/dongtai-webapi:latest
+    image: registry.cn-beijing.aliyuncs.com/huoxian_pub/dongtai-webapi:1.0.0
     volumes:
       - $PWD/config-tutorial.ini:/opt/iast/webapi/conf/config.ini:ro
     depends_on:
@@ -15,7 +15,7 @@ services:
       - dongtai-redis
 
   dongtai-web:
-    image: registry.cn-beijing.aliyuncs.com/huoxian_pub/dongtai-web:latest
+    image: registry.cn-beijing.aliyuncs.com/huoxian_pub/dongtai-web:1.0.0
     ports:
       - "80:80"
     volumes:
@@ -24,7 +24,7 @@ services:
       - dongtai-webapi
 
   dongtai-openapi:
-    image: registry.cn-beijing.aliyuncs.com/huoxian_pub/dongtai-openapi:latest
+    image: registry.cn-beijing.aliyuncs.com/huoxian_pub/dongtai-openapi:1.0.0
     volumes:
        - $PWD/config-tutorial.ini:/opt/iast/apiserver/conf/config.ini:ro
     ports:
@@ -34,7 +34,7 @@ services:
       - dongtai-redis
 
   dongtai-engine:
-    image: registry.cn-beijing.aliyuncs.com/huoxian_pub/dongtai-engine:latest
+    image: registry.cn-beijing.aliyuncs.com/huoxian_pub/dongtai-engine:1.0.0
     volumes:
       - $PWD/config-tutorial.ini:/opt/iast/engine/conf/config.ini:ro
     depends_on:
@@ -42,7 +42,7 @@ services:
       - dongtai-redis
 
   dongtai-engine-task:
-    image: registry.cn-beijing.aliyuncs.com/huoxian_pub/dongtai-engine:latest
+    image: registry.cn-beijing.aliyuncs.com/huoxian_pub/dongtai-engine:1.0.0
     command: ["/opt/iast/engine/docker/entrypoint.sh", "task"]
     volumes:
       - $PWD/config-tutorial.ini:/opt/iast/engine/conf/config.ini:ro
