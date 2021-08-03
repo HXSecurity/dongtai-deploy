@@ -1,5 +1,5 @@
 # dongtai-deploy
-[English](docker-compose/README.MD)
+[English](README.MD)
 
 [![DongTai-project](https://img.shields.io/badge/DongTai%20versions-beta-green)](https://hxsecurity.github.io/DongTai-Doc/)
 
@@ -18,4 +18,4 @@
 
 ### Kubernetes版本一键部署
 
-[部署方案](kubernetes/README.md)
+[部署方案](kubernetes/README.ZH-CN.md)
