@@ -18,6 +18,9 @@ check_env(){
   fi
 }
 
+echo "mysql persistence"
+mkdir data
+
 start_docker_compose(){
   echo "[Info] Starting docker compose ..."
   docker-compose -p dongtai-iast up -d
