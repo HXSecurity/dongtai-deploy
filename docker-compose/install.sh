@@ -18,8 +18,8 @@ check_env(){
   fi
 }
 
-echo "mysql持久化"
-mkdir /data/datadir
+echo "mysql persistence"
+mkdir data
 
 start_docker_compose(){
   echo "[Info] Starting docker compose ..."
