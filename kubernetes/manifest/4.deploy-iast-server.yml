@@ -19,8 +19,6 @@ data:
     [engine]
     url = http://dongtai-engine-svc:80
 
-    [apiserver]
-    url = http://dongtai-openapi-svc:80
 
     [smtp]
     server = smtp_server
@@ -60,11 +58,11 @@ spec:
     spec:
       containers:
         - name: dongtai-webapi-container
-          image: registry.cn-beijing.aliyuncs.com/huoxian_pub/dongtai-webapi:1.0.0
+          image: registry.cn-beijing.aliyuncs.com/huoxian_pub/dongtai-webapi:latest
           imagePullPolicy: IfNotPresent
           volumeMounts:
             - name: configfile
-              mountPath: /opt/iast/webapi/conf/config.ini
+              mountPath: /opt/dongtai/webapi/conf/config.ini
               subPath: config.ini
           resources:
             limits:
@@ -116,11 +114,11 @@ spec:
     spec:
       containers:
         - name: dongtai-openapi-container
-          image: registry.cn-beijing.aliyuncs.com/huoxian_pub/dongtai-openapi:1.0.0
+          image: registry.cn-beijing.aliyuncs.com/huoxian_pub/dongtai-openapi:latest
           imagePullPolicy: Always
           volumeMounts:
             - name: configfile
-              mountPath: /opt/iast/apiserver/conf/config.ini
+              mountPath: /opt/dongtai/openapi/conf/config.ini
               subPath: config.ini
           resources:
             limits:
@@ -225,7 +223,7 @@ spec:
     spec:
       containers:
         - name: dongtai-web-container
-          image: registry.cn-beijing.aliyuncs.com/huoxian_pub/dongtai-web:1.0.0
+          image: registry.cn-beijing.aliyuncs.com/huoxian_pub/dongtai-web:latest
           imagePullPolicy: IfNotPresent
           volumeMounts:
             - name: configfile
@@ -267,11 +265,11 @@ spec:
     spec:
       containers:
         - name: dongtai-engine-container
-          image: registry.cn-beijing.aliyuncs.com/huoxian_pub/dongtai-engine:1.0.0
+          image: registry.cn-beijing.aliyuncs.com/huoxian_pub/dongtai-engine:latest
           imagePullPolicy: IfNotPresent
           volumeMounts:
             - name: configfile
-              mountPath: /opt/iast/engine/conf/config.ini
+              mountPath: /opt/dongtai/engine/conf/config.ini
               subPath: config.ini
           resources:
             limits:
@@ -323,13 +321,13 @@ spec:
     spec:
       containers:
         - name: dongtai-engine-task-container
-          image: registry.cn-beijing.aliyuncs.com/huoxian_pub/dongtai-engine:1.0.0
-          command: [ "/bin/bash","/opt/iast/engine/docker/entrypoint.sh" ]
+          image: registry.cn-beijing.aliyuncs.com/huoxian_pub/dongtai-engine:latest
+          command: [ "/bin/bash","/opt/dongtai/engine/docker/entrypoint.sh" ]
           args: [ "task" ]
           imagePullPolicy: Always
           volumeMounts:
             - name: configfile
-              mountPath: /opt/iast/engine/conf/config.ini
+              mountPath: /opt/dongtai/engine/conf/config.ini
               subPath: config.ini
           resources:
             limits:
