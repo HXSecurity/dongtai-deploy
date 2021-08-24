@@ -2,14 +2,18 @@ version: "2"
 services:
   dongtai-mysql:
     image: registry.cn-beijing.aliyuncs.com/huoxian_pub/dongtai-mysql:latest
+    restart: always
     volumes:
       - ./data:/var/lib/mysql
 
   dongtai-redis:
     image: registry.cn-beijing.aliyuncs.com/huoxian_pub/dongtai-redis:latest
+    restart: always
+
 
   dongtai-webapi:
     image: registry.cn-beijing.aliyuncs.com/huoxian_pub/dongtai-webapi:latest
+    restart: always
     volumes:
       - $PWD/config-tutorial.ini:/opt/dongtai/webapi/conf/config.ini:ro
     depends_on:
@@ -18,6 +22,7 @@ services:
 
   dongtai-web:
     image: registry.cn-beijing.aliyuncs.com/huoxian_pub/dongtai-web:latest
+    restart: always
     ports:
       - "80:80"
     volumes:
@@ -27,6 +32,7 @@ services:
 
   dongtai-openapi:
     image: registry.cn-beijing.aliyuncs.com/huoxian_pub/dongtai-openapi:latest
+    restart: always
     volumes:
        - $PWD/config-tutorial.ini:/opt/dongtai/openapi/conf/config.ini:ro
     ports:
@@ -37,6 +43,7 @@ services:
 
   dongtai-engine:
     image: registry.cn-beijing.aliyuncs.com/huoxian_pub/dongtai-engine:latest
+    restart: always
     volumes:
       - $PWD/config-tutorial.ini:/opt/dongtai/engine/conf/config.ini:ro
     depends_on:
@@ -45,6 +52,7 @@ services:
 
   dongtai-engine-task:
     image: registry.cn-beijing.aliyuncs.com/huoxian_pub/dongtai-engine:latest
+    restart: always
     command: ["/opt/iast/engine/docker/entrypoint.sh", "task"]
     volumes:
       - $PWD/config-tutorial.ini:/opt/dongtai/engine/conf/config.ini:ro
